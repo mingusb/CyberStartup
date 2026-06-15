@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 301 | Preemptive Static Packet Reflection</title>
+    <title>Cyber Startup | Preemptive Static Packet Reflection</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
@@ -887,7 +887,7 @@
 <!-- Cyber Dark Login Modal Overlay -->
 <div id="login-modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(5,7,12,0.95); z-index:1000; display:none; align-items:center; justify-content:center; font-family:sans-serif;">
     <div style="width:360px; background:#0f111a; border:1px solid #1f2d3d; border-top:4px solid #00f2fe; padding:30px; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.5); color:#fff;">
-        <h3 style="margin-bottom:20px; text-align:center; color:#00f2fe; letter-spacing:1px; margin-top:0;">PROJECT301 ACCESS PORTAL</h3>
+        <h3 style="margin-bottom:20px; text-align:center; color:#00f2fe; letter-spacing:1px; margin-top:0;">CYBERSTARTUP ACCESS PORTAL</h3>
         <input type="text" id="username" placeholder="Username" style="width:100%; padding:12px; margin-bottom:12px; background:#07080d; border:1px solid #1f2d3d; color:#fff; border-radius:4px; box-sizing:border-box;">
         <input type="password" id="password" placeholder="Password" style="width:100%; padding:12px; margin-bottom:20px; background:#07080d; border:1px solid #1f2d3d; color:#fff; border-radius:4px; box-sizing:border-box;">
         <button id="login-btn" style="width:100%; padding:12px; background:linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); border:none; color:#000; font-weight:bold; cursor:pointer; border-radius:4px; text-transform:uppercase; transition:opacity 0.2s;">Authenticate Session</button>
@@ -897,12 +897,12 @@
 
 
 <header>
-    <div class="logo">Project 301</div>
+    <div class="logo">Cyber Startup</div>
     <nav>
         <a href="#platform">Platform</a>
         <a href="#technology">Technology</a>
         <a href="#pricing">Pricing</a>
-        <a href="whitepaper/project301_whitepaper.pdf">Whitepaper</a>
+        <a href="whitepaper/cyberstartup_whitepaper.pdf">Whitepaper</a>
         <a href="patent/patent_draft.pdf">Patent</a>
         <a href="whitepaper/pitch_deck.pdf">Pitch Deck</a>
         <a href="#contact">Request Demo</a>
@@ -912,7 +912,7 @@
 <section class="hero">
     <span class="cyber-badge pulse">Neuro-Symbolic AI</span>
     <h1>Stop Reacting. Start Deceiving.</h1>
-    <p>Project 301 is the world's first Zero-Trust Autonomous SOC. Utilizing Continuous-Time Graph Ordinary Differential Equations (CT-GODE) (via adaptive step continuous-time solvers), Hardware-Backed Trusted Execution Environments (TEEs) via Intel SGX, and Hardware-Enforced Static Packet Reflection, we securely trap unauthorized actors before lateral movement begins.</p>
+    <p>Cyber Startup is the world's first Zero-Trust Autonomous SOC. Utilizing Continuous-Time Graph Ordinary Differential Equations (CT-GODE) (via adaptive step continuous-time solvers), Hardware-Backed Trusted Execution Environments (TEEs) via Intel SGX, and Hardware-Enforced Static Packet Reflection, we securely trap unauthorized actors before lateral movement begins.</p>
     <a href="#pricing" class="cta-btn">Secure Your Network</a>
     
     <!-- Restructured clean dashboard grid system -->
@@ -1174,7 +1174,7 @@
         function checkAuthentication() {
             let token = sessionStorage.getItem('access_token');
             if (!token) {
-                token = localStorage.getItem('project301_jwt');
+                token = localStorage.getItem('cyberstartup_jwt');
             }
             if (!token) {
                 loginModal.style.display = 'flex';
@@ -1188,10 +1188,10 @@
             loginErr.style.display = 'none';
             const username = usernameInput.value;
             const password = passwordInput.value;
-            if (username === "admin" && password === "project3012026") {
-                const token = "mock_jwt_token_project3012026";
+            if (username === "admin" && password === "cyberstartup2026") {
+                const token = "mock_jwt_token_cyberstartup2026";
                 sessionStorage.setItem('access_token', token);
-                localStorage.setItem('project301_jwt', token);
+                localStorage.setItem('cyberstartup_jwt', token);
                 loginModal.style.display = 'none';
                 initTelemetryStream(token);
             } else {
@@ -1335,9 +1335,9 @@
             exportStatus.innerText = 'Exporting...';
             exportBtn.disabled = true;
             
-            const token = sessionStorage.getItem('access_token') || localStorage.getItem('project301_jwt') || '';
+            const token = sessionStorage.getItem('access_token') || localStorage.getItem('cyberstartup_jwt') || '';
             const outputParam = new URLSearchParams(window.location.search).get('output_path') || '';
-            const fetchUrl = `/api/export` + (outputParam ? `?output_path=${encodeURIComponent(outputParam)}` : '');
+            const fetchUrl = `api/export` + (outputParam ? `?output_path=${encodeURIComponent(outputParam)}` : '');
             
             fetch(fetchUrl, {
                 headers: {
@@ -1364,8 +1364,8 @@
                     
                     // Trigger simulated download
                     const link = document.createElement('a');
-                    link.href = 'whitepaper/project301_whitepaper.pdf';
-                    link.download = 'project301_whitepaper.pdf';
+                    link.href = 'whitepaper/cyberstartup_whitepaper.pdf';
+                    link.download = 'cyberstartup_whitepaper.pdf';
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
@@ -1388,7 +1388,7 @@
     </div>
     <div class="feature-card">
         <h3>Static Packet Reflection</h3>
-        <p>When a threat is imminent, Project 301 performs dynamic compilation of C-code into eBPF bytecode verified and injected at runtime. We forge TCP SYN-ACKs to silently reroute unauthorized actors into ephemeral containment nodes.</p>
+        <p>Cyber Startup performs dynamic compilation of C-code into eBPF bytecode verified and injected at runtime. We forge TCP SYN-ACKs to silently reroute unauthorized actors into ephemeral containment nodes.</p>
     </div>
     <div class="feature-card">
         <h3>Permutation-Invariant Counterfactual Engine</h3>
@@ -1418,7 +1418,7 @@
     </div>
     <div class="feature-card" style="width: 30%;">
         <h3>Kernel-Level Enforcement</h3>
-        <p>Project 301 leverages structural continuous-time AI to predict attacks. True Zero-Trust architecture backed by dynamically compiled eBPF probes for our enterprise tier.</p>
+        <p>Cyber Startup leverages structural continuous-time AI to predict attacks. True Zero-Trust architecture backed by dynamically compiled eBPF probes for our enterprise tier.</p>
         <a href="#contact" class="cta-btn" style="display:inline-flex; margin-top:15px; font-size:14px; padding:10px 20px;">Request Private Briefing</a>
     </div>
 </section>
@@ -1472,17 +1472,17 @@
 
 <section id="about" class="glass-card" style="text-align: center; padding: 40px; margin: 40px auto; max-width: 1200px;">
     <h2>About Us</h2>
-    <p style="max-width: 800px; margin: 0 auto; color: var(--text-secondary);">Project 301 was founded to bring predictive, mathematically-sound security to the modern enterprise via continuous-time simulations and eBPF integration.</p>
+    <p style="max-width: 800px; margin: 0 auto; color: var(--text-secondary);">Cyber Startup was founded to bring predictive, mathematically-sound security to the modern enterprise via continuous-time simulations and eBPF integration.</p>
 </section>
 
 <section id="contact" class="glass-card" style="text-align: center; padding: 40px; margin: 0 auto 80px auto; max-width: 1200px; border-color: rgba(0, 242, 254, 0.2);">
     <h2>Request a Demo</h2>
     <p style="color: var(--text-secondary); margin-bottom: 24px;">Contact us to learn more about our $150k/yr Tier 1 Base SaaS and secure your network preemptively.</p>
-    <a href="mailto:sales@project301.com" class="cta-btn">Contact Sales</a>
+    <a href="mailto:sales@cyberstartup.com" class="cta-btn">Contact Sales</a>
 </section>
 
 <footer>
-    &copy; 2026 Project 301. All rights reserved. Patents Pending.<br>
+    &copy; 2026 Cyber Startup. All rights reserved. Patents Pending.<br>
     <span style="font-size: 10px; color: var(--text-muted); margin-top: 8px; display: inline-block;">
         *Disclaimer: ROI metrics and financial assurances are rigorously derived from mathematically proven continuous-time simulations across the asset topology.
     </span>
