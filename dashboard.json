@@ -1,0 +1,42 @@
+{
+  "mode": "Tier 1 Base SaaS",
+  "threats_preempted": 1,
+  "nodes_saved": 10,
+  "cost_avoided": "$5.7M",
+  "hours_saved": 140,
+  "blast_radius_score": 0.70,
+  "sequences": [
+    {
+      "mode": "Tier 1 Base SaaS",
+      "threats_preempted": 2,
+      "nodes_saved": 3,
+      "cost_avoided": "$1.8M",
+      "hours_saved": 42,
+      "blast_radius_score": 0.22
+    },
+    {
+      "mode": "Tier 1 Base SaaS",
+      "threats_preempted": 5,
+      "nodes_saved": 12,
+      "cost_avoided": "$6.8M",
+      "hours_saved": 168,
+      "blast_radius_score": 0.55
+    },
+    {
+      "mode": "Tier 1 Base SaaS",
+      "threats_preempted": 8,
+      "nodes_saved": 24,
+      "cost_avoided": "$13.6M",
+      "hours_saved": 336,
+      "blast_radius_score": 0.84
+    },
+    {
+      "mode": "Tier 1 Base SaaS",
+      "threats_preempted": 9,
+      "nodes_saved": 2,
+      "cost_avoided": "$15.2M",
+      "hours_saved": 378,
+      "blast_radius_score": 0.15
+    }
+  ]
+}
