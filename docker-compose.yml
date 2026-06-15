@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  cyberstartup-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    privileged: true
+    volumes:
+      - /sys/kernel/debug:/sys/kernel/debug
+      - /lib/modules:/lib/modules
+      - /usr/src:/usr/src
+    environment:
+      - CYBERSTARTUP_NO_SUDO=1
+      - CYBERSTARTUP_MOCK_TELEMETRY=1

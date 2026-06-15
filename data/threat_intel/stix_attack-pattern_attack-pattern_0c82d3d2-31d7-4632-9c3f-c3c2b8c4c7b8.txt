@@ -1,0 +1,4 @@
+STIX Indicator: Spearphishing Attachment
+TTP: Attack Pattern
+Description: Adversaries may send spearphishing emails with malicious attachments to gain initial access to target systems.
+ID: attack-pattern--0c82d3d2-31d7-4632-9c3f-c3c2b8c4c7b8

@@ -1,0 +1,60 @@
+name: Deploy docs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      MOCK_HW: "1"
+      CYBERSTARTUP_NO_SUDO: "1"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra libbpf-dev linux-libc-dev llvm
+
+      - name: Create Python virtual environment and install packages
+        run: |
+          python -m venv venv_test
+          venv_test/bin/pip install --upgrade pip
+          venv_test/bin/pip install -r requirements.txt pytest
+
+      - name: Run build and tests (make phase3)
+        run: |
+          make phase3 CYBERSTARTUP_NO_SUDO=1
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

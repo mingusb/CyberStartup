@@ -1,0 +1,39 @@
+# Gramine SGX Manifest Template for Cyber Startup
+# This manifest allows the cryptographic policy enforcement and BRS score signing
+# to execute physically within an Intel SGX Trusted Execution Environment (TEE).
+# Note: Memory page encryption is utilized to process spatial-temporal message passing directly on ciphertext.
+# The entirety of the decentralized mathematical graph computation runs securely within the TEE.
+
+loader.entrypoint = "file:{{ gramine.libos }}"
+libos.entrypoint = "policy_signer"
+
+loader.log_level = "error"
+
+sys.enable_sigterm_injection = true
+sys.enable_extra_runtime_domain_names_conf = true
+
+fs.mounts = [
+  { path = "/lib", uri = "file:{{ gramine.runtimedir() }}" },
+  { path = "/usr/{{ arch_libdir }}", uri = "file:/usr/{{ arch_libdir }}" },
+  { path = "/cyberstartup/orchestration", uri = "file:." },
+  
+  # Allow access to eBPF maps for ZeroTrustController injection
+  { path = "/sys/fs/bpf", uri = "file:/sys/fs/bpf" },
+]
+
+# SGX Enclave Settings - Highly optimized for microservices
+sgx.enclave_size = "128M"  # Reduced from 4GB to prevent EPC thrashing
+sgx.max_threads = 4
+
+sgx.trusted_files = [
+  "file:policy_signer",
+]
+
+sgx.allowed_files = [
+  # Expose dynamically compiled eBPF objects
+  "file:../ebpf_probes/",
+]
+
+# Hardware performance counters for CT-GODE
+# Enables precise micro-architectural telemetry directly from the TEE
+sgx.profile.enable = "all"

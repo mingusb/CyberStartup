@@ -1,0 +1,4 @@
+STIX Indicator: Command and Scripting Interpreter
+TTP: Attack Pattern
+Description: Adversaries may abuse command and scripting interpreters to execute commands, scripts, or binaries.
+ID: attack-pattern--44a56c0b-4835-4e3b-9e45-d8434c0b5f10

@@ -1,0 +1,4 @@
+STIX Indicator: Mimikatz
+TTP: Unauthorized Software
+Description: Mimikatz is an open-source credential dumper capable of extracting plaintext passwords, hashes, and PINs from memory.
+ID: unauthorized software--5423bc31-294b-4560-84a1-bc31294b4560

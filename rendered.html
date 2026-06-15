@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+    <style>
+        body { background-color: #fff; }
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script type="module">
+        document.querySelectorAll('.highlight-source-mermaid pre, pre[lang="mermaid"] code, pre code.language-mermaid').forEach(el => {
+            const container = el.tagName.toLowerCase() === 'pre' ? el.parentElement : el.parentElement.parentElement;
+            const div = document.createElement('div');
+            div.className = 'mermaid';
+            div.textContent = el.textContent;
+            container.replaceWith(div);
+        });
+    </script>
+</head>
+<body class="markdown-body">
+<h1>Cyber Startup: Hardware-Enforced Preemptive Containment Redirection Platform</h1>
+<p align="center">
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1b8101cf5ba782b60122c6a5e76cfd8992ed56214693117e81be738721986085/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c616e67756167652d507974686f6e2d626c75653f7374796c653d666f722d7468652d6261646765"><img src="https://camo.githubusercontent.com/1b8101cf5ba782b60122c6a5e76cfd8992ed56214693117e81be738721986085/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c616e67756167652d507974686f6e2d626c75653f7374796c653d666f722d7468652d6261646765" alt="Python" data-canonical-src="https://img.shields.io/badge/Language-Python-blue?style=for-the-badge" style="max-width: 100%;"></a>
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0b62cb565cba57d4e2b0809c11f5a820a79c40f5982b7c1951960ce57cafe237/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5374617475732d4163746976652d737563636573733f7374796c653d666f722d7468652d6261646765"><img src="https://camo.githubusercontent.com/0b62cb565cba57d4e2b0809c11f5a820a79c40f5982b7c1951960ce57cafe237/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5374617475732d4163746976652d737563636573733f7374796c653d666f722d7468652d6261646765" alt="Status" data-canonical-src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" style="max-width: 100%;"></a>
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/153acf9dff19deb8abfc598c53bac50a4ceae0f5c83a552711060d3d78d2c057/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e3f7374796c653d666f722d7468652d6261646765"><img src="https://camo.githubusercontent.com/153acf9dff19deb8abfc598c53bac50a4ceae0f5c83a552711060d3d78d2c057/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e3f7374796c653d666f722d7468652d6261646765" alt="License" data-canonical-src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" style="max-width: 100%;"></a>
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d22b3ac318e537aa5218dfdb0d05f946346c8a4d57d5683bfa2ff1d8bfd713e7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4275696c642d50617373696e672d627269676874677265656e3f7374796c653d666f722d7468652d6261646765"><img src="https://camo.githubusercontent.com/d22b3ac318e537aa5218dfdb0d05f946346c8a4d57d5683bfa2ff1d8bfd713e7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4275696c642d50617373696e672d627269676874677265656e3f7374796c653d666f722d7468652d6261646765" alt="Build" data-canonical-src="https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge" style="max-width: 100%;"></a>
+</p>
+<p>Cyber Startup is a proactive, hardware-enforced cybersecurity platform designed to transition network security from reactive boundary monitoring to autonomous preemptive containment redirection. Fusing hyper-dimensional deep learning with kernel-level packet inspection (eBPF), programmable switch routing (P4), and secure hardware enclaves (Intel SGX), Cyber Startup predicts lateral threat propagation in real-time and dynamically reroutes threat traffic into isolated, cryptographically shielded containment nodes.</p>
+<hr>
+<h2>📖 Product Vision &amp; Ideology</h2>
+<p>Traditional intrusion detection and response systems operate <strong>reactively</strong>—analyzing logs and triggering alerts <em>after</em> a perimeter breach has occurred. In complex enterprise networks, this latency enables unauthorized actors to propagate laterally across host nodes before defensive rules are updated.</p>
+<p>Cyber Startup breaks this paradigm through a <strong>closed-loop preemptive containment redirection architecture</strong>:</p>
+<ol>
+<li><strong>Continuous-Time Threat Forecasting</strong>: Models network propagation as continuous state trajectories on a Temporal Asset Graph (TAG), calculating a <strong>Blast Radius Score (BRS)</strong> for each network node.</li>
+<li><strong>Zero-Trust Active Redirection</strong>: When a node's BRS exceeds safety thresholds, the platform dynamically compiles a mutated eBPF traffic control probe and injects redirection rules into the network's P4-programmable switches.</li>
+<li><strong>Shielded Isolation &amp; Attestation</strong>: Unauthorized Actor traffic targeting the compromised asset is transparently intercepted and routed to a secure containment node running inside an Intel SGX enclave under Gramine LibOS, preventing lateral host leakage.</li>
+<li><strong>ROI Dashboard</strong>: Quantifies the business value of proactive defense by recording incident costs avoided and host preservation hours, writing telemetry statistics directly to a dashboard interface (<code class="notranslate">website/dashboard.json</code>).</li>
+</ol>
+<hr>
+<h2>🛠️ Core Technology Pillars &amp; Code Mappings</h2>
+<p>The platform is structured into distinct, self-contained components located within the <code class="notranslate">/src</code> directory:</p>
+<h3>1. Multi-Modal Neuro-Symbolic Ingestion (<code class="notranslate">src/cyberstartup/models/neuro_symbolic.py</code>)</h3>
+<p>To capture diverse indicators of compromise, Cyber Startup ingests and fuses three data modalities:</p>
+<ul>
+<li><strong>Unstructured Threat Text</strong>: STIX/CTI threat feeds are tokenized and processed by a 2-layer, 2-head BERT transformer (<code class="notranslate">BertModel</code>) to generate text semantic embeddings.</li>
+<li><strong>Unauthorized Software Binary Hex</strong>: Hex frequency analysis maps executable samples into normalized frequency distributions.</li>
+<li><strong>Architecture Diagrams</strong>: Network maps and layout blueprints are parsed into RGB hashing representations.</li>
+</ul>
+<p>The modalities are merged using <strong>Multihead Cross-Attention</strong> where the text embeddings act as the <em>Query</em> (<math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$Q$</math-renderer>) and the concatenated hex/image features represent the <em>Key</em> (<math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$K$</math-renderer>) and <em>Value</em> (<math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$V$</math-renderer>).</p>
+<h4>Neuro-Symbolic Logic &amp; Z3 Constraints</h4>
+<p>To guarantee that the model's output satisfies hard safety rules, the fused representation passes through a <code class="notranslate">LogicSolverModule</code>. This module uses the <strong>Z3 Theorem Prover</strong> to enforce first-order logic constraints over probabilistic threat dimensions (e.g., compromise probability <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$c$</math-renderer>, susceptibility <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$s$</math-renderer>, and implication risk <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$imp$</math-renderer>):</p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+\text{Implies}(c &gt; 0.5 \land s &gt; 0.5, imp \ge 0.8)
+$$</math-renderer></p>
+<p>If Z3 detects an UNSAT condition, it solves for the nearest convex boundary projection. Gradients are propagated through the solver during training using a <strong>Straight-Through Estimator (STE)</strong>:</p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+
+\text{fused}_{\text{bounded}} = x - x.\text{detach}() + x_{\text{convex}}
+
+$$</math-renderer></p>
+<p>A <strong>Graph Isomorphism Network (GIN)</strong> processes the verified causal DAG relationships to output a permutation-invariant threat representation vector <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$Z_{\text{threat}}$</math-renderer>.</p>
+<h3>2. Continuous-Time Graph Neural Network (<code class="notranslate">src/cyberstartup/models/ct_gode.py</code>)</h3>
+<p>Asset state propagation is modeled as a system of continuous-time differential equations running on a Temporal Asset Graph (TAG). The spatial-temporal neighborhood message-passing of node <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$v$</math-renderer> aggregates incoming edge weights from neighbors <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$\mathcal{N}(v)$</math-renderer>:</p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+
+\text{messages}_v = \sum_{u \in \mathcal{N}(v)} \alpha_{uv} \cdot h_u
+
+$$</math-renderer></p>
+<p>where <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$\alpha_{uv}$</math-renderer> is a spatial-temporal cross-attention coefficient. To represent threat attenuation, a base-2 exponential decay representing temporal staleness is applied over time interval <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$t$</math-renderer>:</p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+\alpha_{uv}(t) = \alpha_{uv} \cdot 2.0^{-\lambda t}
+$$</math-renderer></p>
+<p>Additionally, the GIN threat representation vector <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$Z_{\text{threat}}$</math-renderer> is mapped to exposed initial entry ports by matching nodes where the index satisfies <code class="notranslate">src_node</code> <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$\pmod 3 = 0$</math-renderer>.</p>
+<h3>3. Custom Runge-Kutta 4th Order ODE Solver (<code class="notranslate">src/cyberstartup/models/ode_solver.py</code>)</h3>
+<p>To avoid heavy external numerical integration wrappers, Cyber Startup implements a pure PyTorch 4th-Order Runge-Kutta (RK4) ordinary differential equation solver.<br>
+Given the derivative function <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$f(t, y) = \frac{dh}{dt} = \text{ReLU}(W_{\text{out}}(\text{messages}) + Z_{\text{threat}}) - h$</math-renderer>, the solver integrates the asset state trajectory:</p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+k_1 = f(t, y)
+$$</math-renderer></p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+k_2 = f\left(t + \frac{dt}{2}, y + \frac{dt}{2} k_1\right)
+$$</math-renderer></p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+k_3 = f\left(t + \frac{dt}{2}, y + \frac{dt}{2} k_2\right)
+$$</math-renderer></p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+k_4 = f(t + dt, y + dt k_3)
+$$</math-renderer></p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+y_{i+1} = y_i + \frac{dt}{6} (k_1 + 2k_2 + 2k_3 + k_4)
+$$</math-renderer></p>
+<p>The final integrated state <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$h_{\text{final}} = h_t[-1]$</math-renderer> is projected to compute the Blast Radius Score (BRS) per asset node:</p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+\text{BRS} = \sigma(W_{\text{brs}} h_{\text{final}} + b_{\text{brs}})
+$$</math-renderer></p>
+<h3>4. Polymorphic eBPF Traffic Shaper (<code class="notranslate">src/ebpf/tc_shaper.c</code>)</h3>
+<p>Enforcement at the local host level is driven by an eBPF program hooked to kernel Traffic Control (<code class="notranslate">tc</code>) interfaces.<br>
+The probe reads the active <code class="notranslate">compromised_ips</code> and <code class="notranslate">ctgode_weights</code> maps. To prevent host performance degradation, the shaper evaluates threat weight decay using bitwise shifts:</p>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+\text{decayedWeight} = \text{weight} \gg (\Delta t \times \lambda)
+$$</math-renderer></p>
+<ul>
+<li>
+<strong>Staleness Drop</strong>: If the decayed weight falls below 25, the threat data is considered stale, and the shaper drops incoming packets via <code class="notranslate">XDP_DROP</code>.</li>
+<li>
+<strong>Semantic Shaping</strong>: If the decayed weight is <math-renderer class="js-inline-math" style="display: inline-block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$\ge 25$</math-renderer>, for TCP SYN packets, it swaps headers and fabricates a TCP SYN-ACK response, returning it via <code class="notranslate">XDP_TX</code> with a computed sequence number:</li>
+</ul>
+<p><math-renderer class="js-display-math" style="display: block" data-run-id="6cba2a2284176318f3eb3baf1943b88b">$$
+\text{SEQ} = \text{saddr} \oplus \text{daddr} \oplus \text{decayedWeight} \oplus (\text{currentTime} \pmod{2^{32}})
+$$</math-renderer></p>
+<ul>
+<li><strong>Isolation</strong>: All other non-SYN TCP packets targeting the compromised asset are immediately dropped (<code class="notranslate">XDP_DROP</code>).</li>
+</ul>
+<h3>5. P4 ASIC Controller &amp; TEE Enclave (<code class="notranslate">src/p4/containment_router.p4</code>, <code class="notranslate">src/sgx/sgx_enclave.c</code>)</h3>
+<p>At the hardware layer, a P4 programmable switch program rewrites packet headers at ASIC speeds. It uses a <code class="notranslate">containment_redirection_table</code> to match destination IPs of compromised hosts and executes a <code class="notranslate">redirect_to_containment_node</code> action to rewrite MAC addresses and route traffic out a dedicated containment node egress port.</p>
+<p>The containment node applications run within a Trusted Execution Environment (TEE) shielded by Intel SGX under a Gramine manifest (<code class="notranslate">src/sgx/cyberstartup_sgx.manifest.template</code>). The control plane enforcer cryptographically attests the compiler enclave via <code class="notranslate">attest_enclave</code> with AES-128-GCM shielding, validating the compiled eBPF binaries' hashes (<code class="notranslate">compile_in_enclave</code>) before loading them into the kernel to prevent host privilege escalation.</p>
+<hr>
+<h2>📊 System Architecture Diagrams</h2>
+<h3>1. End-to-End Machine Learning Pipeline</h3>
+<p>This diagram traces the flow from multi-modal inputs, cross-attention fusion, Z3 logic constraints, and GIN embeddings to RK4 ODE simulation and GAN-based counterfactual stress testing:</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate"><span class="pl-k">graph</span> <span class="pl-c1">TD</span>
+    <span class="pl-c"><span class="pl-c">%%</span> Main data ingestion &amp; preprocessing</span>
+    <span class="pl-k">subgraph</span> <span class="pl-en">Multi_Modal_Ingestion</span>
+        <span class="pl-ent">in_txt</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Unstructured Intelligence Text<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">parser_txt</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>TextParser<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">in_bin</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Unverified Software Binary Dumps<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">parser_bin</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>HexParser<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">in_img</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Arch/Network Diagrams<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">parser_img</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>ImageParser<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        
+        <span class="pl-ent">parser_txt</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Raw String List</span><span class="pl-k">|</span> <span class="pl-ent">bert_llm</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>BERT LLM Pass<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">bert_llm</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">CLS Representation</span><span class="pl-k">|</span> <span class="pl-ent">proj_txt</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Linear Projection<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">proj_txt</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">ReLU</span><span class="pl-k">|</span> <span class="pl-ent">emb_txt</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Text Embedding (t_emb)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        
+        <span class="pl-ent">parser_bin</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Byte Frequency Modulo</span><span class="pl-k">|</span> <span class="pl-ent">proj_bin</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Linear Projection<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">proj_bin</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">ReLU</span><span class="pl-k">|</span> <span class="pl-ent">emb_bin</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Binary Embedding (b_emb)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        
+        <span class="pl-ent">parser_img</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">RGB Hashing Modulo</span><span class="pl-k">|</span> <span class="pl-ent">proj_img</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Linear Projection<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">proj_img</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">ReLU</span><span class="pl-k">|</span> <span class="pl-ent">emb_img</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Image Embedding (i_emb)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-k">end</span>
+
+    <span class="pl-c"><span class="pl-c">%%</span> Fusion &amp; Logic Constraints</span>
+    <span class="pl-k">subgraph</span> <span class="pl-en">Fusion_Logic</span>
+        <span class="pl-ent">emb_bin</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Concat</span><span class="pl-k">|</span> <span class="pl-ent">fused_kv</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Key and Value Vectors<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">emb_img</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Concat</span><span class="pl-k">|</span> <span class="pl-ent">fused_kv</span>
+        <span class="pl-ent">emb_txt</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Query Vector</span><span class="pl-k">|</span> <span class="pl-ent">cross_attn</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Multihead Attention<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">fused_kv</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">cross_attn</span>
+        <span class="pl-ent">cross_attn</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Squeeze</span><span class="pl-k">|</span> <span class="pl-ent">fused_emb</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Fused Multi-Modal Embedding<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        
+        <span class="pl-ent">fused_emb</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">logic_solver</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>LogicSolverModule (Z3)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">logic_solver</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">z3_check</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">{</span></span><span class="pl-s"><span class="pl-pds">"</span>Z3 SAT?<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">}</span></span></span>
+        <span class="pl-ent">z3_check</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Yes: Keep</span><span class="pl-k">|</span> <span class="pl-ent">bounded_emb</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Bounded Embedding<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">z3_check</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">No: Correct imp</span><span class="pl-k">|</span> <span class="pl-ent">z3_model</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Z3 Model Reconstruction<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">z3_model</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">bounded_emb</span>
+        <span class="pl-ent">bounded_emb</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Straight-Through Estimator</span><span class="pl-k">|</span> <span class="pl-ent">gradient_flow</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Preserved Gradients<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">gradient_flow</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">L2 Normalization</span><span class="pl-k">|</span> <span class="pl-ent">logic_constrained</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Logic-Constrained Embeddings<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-k">end</span>
+
+    <span class="pl-c"><span class="pl-c">%%</span> GIN projection to Event Vector</span>
+    <span class="pl-k">subgraph</span> <span class="pl-en">Causal_Representation</span>
+        <span class="pl-ent">dag_edges</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Causal Event DAG Edges<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">GIN_threat</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Graph Isomorphism Network (GIN)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">logic_constrained</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">GIN_threat</span>
+        <span class="pl-ent">GIN_threat</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Sum Pooling Readout</span><span class="pl-k">|</span> <span class="pl-ent">z_event</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Event Conditioning Vector (Z_event)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-k">end</span>
+
+
+    <span class="pl-c"><span class="pl-c">%%</span> Continuous-Time Graph ODE (CT-GODE) Engine</span>
+    <span class="pl-k">subgraph</span> <span class="pl-en">CT_GODE_Engine</span>
+        <span class="pl-ent">h0_nodes</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Initial Node States (h0)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">ct_gode</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>CT-GODE Module<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">network_edges</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Telemetry Net Topology<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">ct_gode</span>
+        <span class="pl-ent">z_event</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Evaluation Path</span><span class="pl-k">|</span> <span class="pl-ent">ct_gode</span>
+        <span class="pl-ent">t_span</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Time Steps Span (t)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">ct_gode</span>
+        
+        <span class="pl-ent">ct_gode</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">odeint RK4 step-by-step solver</span><span class="pl-k">|</span> <span class="pl-ent">rk4_solve</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Runge-Kutta 4th Order Solver<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        
+        <span class="pl-k">subgraph</span> <span class="pl-en">GraphODEFunc_Eval</span>
+            <span class="pl-ent">rk4_solve</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Current t, h</span><span class="pl-k">|</span> <span class="pl-ent">ode_func</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>GraphODEFunc<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            <span class="pl-ent">ode_func</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Base-2 Exp Decay</span><span class="pl-k">|</span> <span class="pl-ent">time_decay</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Staleness Decay (time_decay)<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            <span class="pl-ent">ode_func</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">src_node % 3 == 0</span><span class="pl-k">|</span> <span class="pl-ent">threat_entry</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Route Z_event to Entry Nodes<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            
+            <span class="pl-ent">h_src_dst</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Concat Source and Destination h<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">concat_feat</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Concat: h_src, h_dst, e_uv, z_event<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            <span class="pl-ent">threat_entry</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">concat_feat</span>
+            
+            <span class="pl-ent">concat_feat</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">cross_attn_edges</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Cross-Attention Weight W_a<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            <span class="pl-ent">cross_attn_edges</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">leaky_relu</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>LeakyReLU<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            <span class="pl-ent">leaky_relu</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">softmax_norm</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Neighborhood Softmax Normalization<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            <span class="pl-ent">softmax_norm</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">apply_decay</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Apply Staleness Decay<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            <span class="pl-ent">apply_decay</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">spatial_msg</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Spatial-Temporal Message Passing<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            
+            <span class="pl-ent">spatial_msg</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">derivative_calc</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>dh/dt = F.relu(W_out * messages) + event_vector - h<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+            <span class="pl-ent">derivative_calc</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Return dh_dt</span><span class="pl-k">|</span> <span class="pl-ent">rk4_solve</span>
+        <span class="pl-k">end</span>
+        
+        <span class="pl-ent">rk4_solve</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Final Integrator State h_final</span><span class="pl-k">|</span> <span class="pl-ent">blast_radius_proj</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Blast Radius Projection Layer<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">blast_radius_proj</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Sigmoid</span><span class="pl-k">|</span> <span class="pl-ent">brs_score</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Blast Radius Score (BRS) per Node<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-k">end</span>
+
+    <span class="pl-c"><span class="pl-c">%%</span> Remediation &amp; Redirection Links</span>
+    <span class="pl-ent">brs_score</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">BRS_threshold_check</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">{</span></span><span class="pl-s"><span class="pl-pds">"</span>BRS Exceeds Threshold?<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">}</span></span></span></pre></div>
+<hr>
+<h3>2. Zero-Trust Hardware Enforcement &amp; Remediation Loop</h3>
+<p>This diagram maps how the control plane updates the kernel maps, switch ASIC tables, and SGX-shielded containment nodes to isolate compromised nodes:</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate"><span class="pl-k">graph</span> <span class="pl-c1">TD</span>
+    <span class="pl-k">classDef</span> <span class="pl-en">control</span> <span class="pl-s1"><span class="pl-c1"><span class="pl-c1">fill</span></span>:<span class="pl-c1">#f9f</span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">stroke</span></span>:<span class="pl-c1">#333</span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">stroke-width</span></span>:<span class="pl-c1">2<span class="pl-k">px</span></span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">color</span></span>:<span class="pl-c1">#000000</span></span><span class="pl-sg">;</span>
+    <span class="pl-k">classDef</span> <span class="pl-en">hardware</span> <span class="pl-s1"><span class="pl-c1"><span class="pl-c1">fill</span></span>:<span class="pl-c1">#bbf</span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">stroke</span></span>:<span class="pl-c1">#333</span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">stroke-width</span></span>:<span class="pl-c1">2<span class="pl-k">px</span></span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">color</span></span>:<span class="pl-c1">#000000</span></span><span class="pl-sg">;</span>
+    <span class="pl-k">classDef</span> <span class="pl-en">kernel</span> <span class="pl-s1"><span class="pl-c1"><span class="pl-c1">fill</span></span>:<span class="pl-c1">#fbb</span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">stroke</span></span>:<span class="pl-c1">#333</span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">stroke-width</span></span>:<span class="pl-c1">2<span class="pl-k">px</span></span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">color</span></span>:<span class="pl-c1">#000000</span></span><span class="pl-sg">;</span>
+    <span class="pl-k">classDef</span> <span class="pl-en">enclave</span> <span class="pl-s1"><span class="pl-c1"><span class="pl-c1">fill</span></span>:<span class="pl-c1">#bfb</span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">stroke</span></span>:<span class="pl-c1">#333</span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">stroke-width</span></span>:<span class="pl-c1">2<span class="pl-k">px</span></span></span><span class="pl-sg">,</span><span class="pl-s1"><span class="pl-c1"><span class="pl-c1">color</span></span>:<span class="pl-c1">#000000</span></span><span class="pl-sg">;</span>
+
+    <span class="pl-k">subgraph</span> <span class="pl-en">ASIC_Layer</span>
+        <span class="pl-ent">P4_Ingress</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>P4 Ingress Parser<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">hardware</span>
+        <span class="pl-ent">Dec_Table</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">{</span></span><span class="pl-s"><span class="pl-pds">"</span>containment_redirection_table Match<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">}</span></span></span><span class="pl-k">:::</span><span class="pl-en">hardware</span>
+        <span class="pl-ent">P4_Fwd</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>ipv4_forward<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">hardware</span>
+        <span class="pl-ent">P4_Redirect</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>redirect_to_containment_node<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">hardware</span>
+    <span class="pl-k">end</span>
+
+    <span class="pl-k">subgraph</span> <span class="pl-en">Kernel_Layer</span>
+        <span class="pl-ent">XDP_Hook</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>XDP: semantic_shaper<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">kernel</span>
+        <span class="pl-ent">Map_Comp</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>flagged_ips Map<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">kernel</span>
+        <span class="pl-ent">Map_Weights</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>ctgode_weights Map<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">kernel</span>
+        <span class="pl-ent">Decay_Check</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">{</span></span><span class="pl-s"><span class="pl-pds">"</span>BRS Weight Decay Calc<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">}</span></span></span><span class="pl-k">:::</span><span class="pl-en">kernel</span>
+        <span class="pl-ent">PMU_Prog</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>perf_event: bpf_pmu_monitor<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">kernel</span>
+        <span class="pl-ent">PMU_Map</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>pmu_ringbuf Map<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">kernel</span>
+    <span class="pl-k">end</span>
+
+    <span class="pl-k">subgraph</span> <span class="pl-en">Control_Plane</span>
+        <span class="pl-ent">CT_GODE</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>CT-GODE Neural Engine<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+        <span class="pl-ent">P4_Ctrl</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>P4AsicController<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">control</span>
+        <span class="pl-ent">XDP_Ctrl</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>ZeroTrustController<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">control</span>
+        <span class="pl-ent">Poly_Comp</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>PolymorphicCompiler<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">control</span>
+        <span class="pl-ent">Clang</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>clang compiler<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-k">end</span>
+
+    <span class="pl-k">subgraph</span> <span class="pl-en">SGX_TEE</span>
+        <span class="pl-ent">Attestation</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>Enclave Attestation<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">enclave</span>
+        <span class="pl-ent">Mem_Encrypt</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>AES-GCM Memory Shield<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">enclave</span>
+        <span class="pl-ent">Obj_Verifier</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>compile_in_enclave Verifier<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span><span class="pl-k">:::</span><span class="pl-en">enclave</span>
+    <span class="pl-k">end</span>
+
+    <span class="pl-c"><span class="pl-c">%%</span> Flow lines - Ingress &amp; Routing</span>
+    <span class="pl-ent">External_Actor</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>External Actor / Inbound Traffic<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">1. Packets</span><span class="pl-k">|</span> <span class="pl-ent">P4_Ingress</span>
+    <span class="pl-ent">P4_Ingress</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">Dec_Table</span>
+    <span class="pl-ent">Dec_Table</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">No Match</span><span class="pl-k">|</span> <span class="pl-ent">P4_Fwd</span>
+    <span class="pl-ent">Dec_Table</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Matched flagged_ip</span><span class="pl-k">|</span> <span class="pl-ent">P4_Redirect</span>
+    <span class="pl-ent">P4_Redirect</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">2a. Route to TEE Containment Node</span><span class="pl-k">|</span> <span class="pl-ent">Containment_Node</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>SGX-Shielded Containment Node<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">P4_Fwd</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">2b. Forward to Host Node</span><span class="pl-k">|</span> <span class="pl-ent">XDP_Hook</span>
+
+    <span class="pl-c"><span class="pl-c">%%</span> Flow lines - Local Node Datapath</span>
+    <span class="pl-ent">XDP_Hook</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Lookup Node ID</span><span class="pl-k">|</span> <span class="pl-ent">Map_Comp</span>
+    <span class="pl-ent">Map_Comp</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Valid Profile</span><span class="pl-k">|</span> <span class="pl-ent">Pass</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>XDP_PASS to TCP/IP Stack<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">Map_Comp</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Flagged Profile</span><span class="pl-k">|</span> <span class="pl-ent">Map_Weights</span>
+    <span class="pl-ent">Map_Weights</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">Decay_Check</span>
+    <span class="pl-ent">Decay_Check</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">BRS Decayed Under 25 or Stale</span><span class="pl-k">|</span> <span class="pl-ent">Drop</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>XDP_DROP Packet Containment<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">Decay_Check</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">BRS Decayed Over 25 and TCP SYN</span><span class="pl-k">|</span> <span class="pl-ent">TX</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>XDP_TX: Respond with SYN-ACK<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">Decay_Check</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">BRS Decayed Over 25 and Non-SYN TCP</span><span class="pl-k">|</span> <span class="pl-ent">Drop</span>
+
+    <span class="pl-c"><span class="pl-c">%%</span> Telemetry Loop</span>
+    <span class="pl-ent">PMU_Prog</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">Capture Cache/TLB/Branch Misses</span><span class="pl-k">|</span> <span class="pl-ent">PMU_Map</span>
+    <span class="pl-ent">CT_GODE</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">3. Read Telemetry and Topology via libbpf</span><span class="pl-k">|</span> <span class="pl-ent">PMU_Map</span>
+    <span class="pl-ent">CT_GODE</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">4. Detects Flagged Assets</span><span class="pl-k">|</span> <span class="pl-ent">Poly_Comp</span>
+
+    <span class="pl-c"><span class="pl-c">%%</span> Control Plane Integration &amp; Attestation</span>
+    <span class="pl-ent">Poly_Comp</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">5a. Compile Mutated C</span><span class="pl-k">|</span> <span class="pl-ent">Clang</span>
+    <span class="pl-ent">Clang</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">5b. Mutated .o ELF Binary</span><span class="pl-k">|</span> <span class="pl-ent">Obj_Verifier</span>
+    <span class="pl-ent">Obj_Verifier</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">5c. Cryptographically Attest Hash</span><span class="pl-k">|</span> <span class="pl-ent">Attestation</span>
+    
+    <span class="pl-ent">P4_Ctrl</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">6a. Secure gRPC / mTLS Table Injection</span><span class="pl-k">|</span> <span class="pl-ent">Dec_Table</span>
+    <span class="pl-ent">P4_Ctrl</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">6b. Enclave Attestation Check</span><span class="pl-k">|</span> <span class="pl-ent">Attestation</span>
+    
+    <span class="pl-ent">XDP_Ctrl</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">7a. Update BPF Maps natively via libbpf</span><span class="pl-k">|</span> <span class="pl-ent">Map_Comp</span>
+    <span class="pl-ent">XDP_Ctrl</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">7b. Update BPF Maps natively via libbpf</span><span class="pl-k">|</span> <span class="pl-ent">Map_Weights</span>
+    <span class="pl-ent">XDP_Ctrl</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">7c. Enclave Attestation Check</span><span class="pl-k">|</span> <span class="pl-ent">Attestation</span>
+
+    <span class="pl-c"><span class="pl-c">%%</span> Memory Encryption</span>
+    <span class="pl-ent">CT_GODE</span> <span class="pl-k">-.-&gt;</span><span class="pl-k">|</span><span class="pl-s">8. Encrypted Message Passing</span><span class="pl-k">|</span> <span class="pl-ent">Mem_Encrypt</span></pre></div>
+<hr>
+<h2>⚙️ Installation &amp; Build Lifecycle</h2>
+<h3>Prerequisites</h3>
+<p>Before compilation, install the required packages.</p>
+<ul>
+<li>
+<p><strong>Ubuntu / Debian</strong>:</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt-get update
+sudo apt-get install -y build-essential make clang llvm libbpf-dev \
+                        libssl-dev texlive-latex-base pandoc \
+                        python3-venv python3-dev libc6-dev-i386</pre></div>
+</li>
+<li>
+<p><strong>RedHat / CentOS / Fedora</strong>:</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf install -y make clang llvm libbpf-devel openssl-devel \
+                    pandoc texlive python3-pip python3-devel</pre></div>
+</li>
+</ul>
+<h3>Step 1: Virtual Environment Setup</h3>
+<p>Cyber Startup isolates its machine learning and testing runtimes into dedicated virtual environments.</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Clone and enter the repository</span>
+<span class="pl-c1">cd</span> teamwork_projects/cyberstartup
+
+<span class="pl-c"><span class="pl-c">#</span> Create and provision the production virtual environment</span>
+python3 -m venv venv
+<span class="pl-c1">source</span> venv/bin/activate
+pip install -r requirements.txt</pre></div>
+<h3>Step 2: Build Native Artifacts (Makefile)</h3>
+<p>The project utilizes a root <code class="notranslate">Makefile</code> to compile the host kernel modules, SGX enclaves, and documentation:</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1. Compile eBPF Traffic Shaper and PMU Monitor kernel object files</span>
+make ebpf
+
+<span class="pl-c"><span class="pl-c">#</span> 2. Compile SGX Enclave shared library with OpenSSL fallbacks</span>
+make sgx
+
+<span class="pl-c"><span class="pl-c">#</span> 3. Compile P4 Containment Node Router routing rules (requires local p4c or Docker)</span>
+make p4
+
+<span class="pl-c"><span class="pl-c">#</span> 4. Rebuild patents, marketing whitepapers, and pitch deck PDFs</span>
+make phase3</pre></div>
+<h3>Step 3: Run the Application</h3>
+<p>The platform can be run in two modes:</p>
+<h4>Option A: FastAPI Production Dashboard Backend</h4>
+<p>The production backend server coordinates active telemetry mapping, model execution, and serves the dashboard UI. Run the automatic setup and run script:</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">./setup_and_run.sh</pre></div>
+<p>This script automatically:</p>
+<ul>
+<li>Provision/Verify the virtual environment (<code class="notranslate">venv</code>).</li>
+<li>Downloads offline Fallback STIX dataset under <code class="notranslate">data/threat_intel/</code> via <code class="notranslate">mitre_fetcher.py</code>.</li>
+<li>Starts the production API server.</li>
+</ul>
+<p>Access the live dashboard in your browser at:<br>
+<code class="notranslate">http://localhost:8000</code></p>
+<h4>Option B: CLI Triage Simulation</h4>
+<p>To run an interactive command-line simulation of the prediction and remediation loop:</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">PYTHONPATH=src python3 src/cyberstartup/main.py</pre></div>
+<h4>Option C: Production Docker Deployment</h4>
+<p>To launch the complete containerized dashboard with high-privilege kernel mappings:</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker-compose up --build</pre></div>
+<hr>
+<h2>💡 Quickstart Programmatic Usage</h2>
+<p>Below is a self-contained, end-to-end Python script demonstrating how to instantiate the neuro-symbolic pipeline, fetch live telemetry, and execute continuous-time threat forecasting programmatically:</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">torch</span>
+<span class="pl-k">from</span> <span class="pl-s1">cyberstartup</span>.<span class="pl-s1">models</span>.<span class="pl-s1">neuro_symbolic</span> <span class="pl-k">import</span> <span class="pl-v">NeuroSymbolicPipeline</span>
+<span class="pl-k">from</span> <span class="pl-s1">cyberstartup</span>.<span class="pl-s1">models</span>.<span class="pl-s1">ct_gode</span> <span class="pl-k">import</span> <span class="pl-c1">CT_GODE</span>
+<span class="pl-k">from</span> <span class="pl-s1">cyberstartup</span>.<span class="pl-s1">telemetry</span>.<span class="pl-s1">linux_pmu</span> <span class="pl-k">import</span> <span class="pl-v">LiveTelemetry</span>
+
+<span class="pl-c"># 1. Initialize the Neuro-Symbolic Ingestion and Fusion Pipeline</span>
+<span class="pl-c"># Dimensions: BERT Text (768), Hex Binary (256), Image Layout (512), Hidden Embeddings (128)</span>
+<span class="pl-s1">pipeline</span> <span class="pl-c1">=</span> <span class="pl-en">NeuroSymbolicPipeline</span>(<span class="pl-s1">text_dim</span><span class="pl-c1">=</span><span class="pl-c1">768</span>, <span class="pl-s1">binary_dim</span><span class="pl-c1">=</span><span class="pl-c1">256</span>, <span class="pl-s1">image_dim</span><span class="pl-c1">=</span><span class="pl-c1">512</span>, <span class="pl-s1">hidden_dim</span><span class="pl-c1">=</span><span class="pl-c1">128</span>)
+
+<span class="pl-c"># 2. Initialize the Continuous-Time Graph GNN Model</span>
+<span class="pl-s1">ctgode</span> <span class="pl-c1">=</span> <span class="pl-en">CT_GODE</span>(<span class="pl-s1">hidden_dim</span><span class="pl-c1">=</span><span class="pl-c1">128</span>, <span class="pl-s1">threat_dim</span><span class="pl-c1">=</span><span class="pl-c1">128</span>)
+
+<span class="pl-c"># 3. Ingest Physical Threat Intelligence Data</span>
+<span class="pl-k">from</span> <span class="pl-s1">cyberstartup</span>.<span class="pl-s1">ingestion</span>.<span class="pl-s1">parsers</span> <span class="pl-k">import</span> <span class="pl-v">TextParser</span>, <span class="pl-v">HexParser</span>, <span class="pl-v">ImageParser</span>
+
+<span class="pl-s1">text_parser</span> <span class="pl-c1">=</span> <span class="pl-en">TextParser</span>(<span class="pl-s1">embedding_dim</span><span class="pl-c1">=</span><span class="pl-c1">768</span>)
+<span class="pl-s1">hex_parser</span> <span class="pl-c1">=</span> <span class="pl-en">HexParser</span>(<span class="pl-s1">embedding_dim</span><span class="pl-c1">=</span><span class="pl-c1">256</span>)
+<span class="pl-s1">image_parser</span> <span class="pl-c1">=</span> <span class="pl-en">ImageParser</span>(<span class="pl-s1">embedding_dim</span><span class="pl-c1">=</span><span class="pl-c1">512</span>)
+
+<span class="pl-s1">text_intel</span> <span class="pl-c1">=</span> <span class="pl-s1">text_parser</span>.<span class="pl-c1">parse</span>([<span class="pl-s">"data/threat_intel/stix_report.txt"</span>])
+<span class="pl-s1">binary_intel</span> <span class="pl-c1">=</span> <span class="pl-s1">hex_parser</span>.<span class="pl-c1">parse</span>([<span class="pl-s">"data/threat_intel/unauthorized_software_dump.bin"</span>])
+<span class="pl-s1">image_intel</span> <span class="pl-c1">=</span> <span class="pl-s1">image_parser</span>.<span class="pl-c1">parse</span>([<span class="pl-s">"data/threat_intel/arch_diagram.png"</span>])
+<span class="pl-s1">threat_dag_edges</span> <span class="pl-c1">=</span> <span class="pl-s1">torch</span>.<span class="pl-c1">tensor</span>([[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">0</span>]], <span class="pl-s1">dtype</span><span class="pl-c1">=</span><span class="pl-s1">torch</span>.<span class="pl-c1">long</span>) <span class="pl-c"># Vulnerability graph</span>
+
+<span class="pl-c"># Run ingestion, cross-attention fusion, and Z3 logic checking to compute threat context</span>
+<span class="pl-s1">z_threat</span> <span class="pl-c1">=</span> <span class="pl-en">pipeline</span>(<span class="pl-s1">text_intel</span>, <span class="pl-s1">binary_intel</span>, <span class="pl-s1">image_intel</span>, <span class="pl-s1">threat_dag_edges</span>)
+
+<span class="pl-c"># 4. Fetch Active Host Network Topology &amp; PMU Cache Telemetry</span>
+<span class="pl-s1">telemetry</span> <span class="pl-c1">=</span> <span class="pl-en">LiveTelemetry</span>(<span class="pl-s1">num_assets</span><span class="pl-c1">=</span><span class="pl-c1">5</span>)
+<span class="pl-s1">h0</span> <span class="pl-c1">=</span> <span class="pl-s1">telemetry</span>.<span class="pl-c1">read_cpu_stats</span>()               <span class="pl-c"># Retrieves PMU cache misses (5 assets, 128 dim)</span>
+<span class="pl-s1">edge_index</span> <span class="pl-c1">=</span> <span class="pl-s1">telemetry</span>.<span class="pl-c1">read_network_topology</span>() <span class="pl-c"># Fetches active TCP connections from BPF maps</span>
+
+<span class="pl-c"># 5. Simulate Threat Trajectories using RK4 Solver over continuous time</span>
+<span class="pl-c"># We integrate the ODE state system from t=0.0 to t=1.0 over 10 steps</span>
+<span class="pl-s1">t_span</span> <span class="pl-c1">=</span> <span class="pl-s1">torch</span>.<span class="pl-c1">linspace</span>(<span class="pl-c1">0.0</span>, <span class="pl-c1">1.0</span>, <span class="pl-s1">steps</span><span class="pl-c1">=</span><span class="pl-c1">10</span>)
+<span class="pl-s1">blast_radius_scores</span> <span class="pl-c1">=</span> <span class="pl-en">ctgode</span>(<span class="pl-s1">h0</span>, <span class="pl-s1">edge_index</span>, <span class="pl-s1">z_threat</span>, <span class="pl-s1">t_span</span>)
+
+<span class="pl-c"># 6. Evaluate Predictive Blast Radius Score (BRS) per Asset</span>
+<span class="pl-en">print</span>(<span class="pl-s">"=== Predictive Threat Blast Radius Scores ==="</span>)
+<span class="pl-k">for</span> <span class="pl-s1">node_idx</span>, <span class="pl-s1">score</span> <span class="pl-c1">in</span> <span class="pl-en">enumerate</span>(<span class="pl-s1">blast_radius_scores</span>):
+    <span class="pl-en">print</span>(<span class="pl-s">f"Asset Node #<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">node_idx</span><span class="pl-kos">}</span></span>: BRS = <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">score</span>.<span class="pl-c1">item</span>():.4f<span class="pl-kos">}</span></span>"</span>)
+    <span class="pl-k">if</span> <span class="pl-s1">score</span>.<span class="pl-c1">item</span>() <span class="pl-c1">&gt;</span> <span class="pl-c1">0.05</span>:
+         <span class="pl-en">print</span>(<span class="pl-s">f"  --&gt; ALERT: Node #<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">node_idx</span><span class="pl-kos">}</span></span> exceeds threshold. Remediating via eBPF/P4..."</span>)</pre></div>
+<hr>
+<h2>🧪 Automated Testing &amp; Environment Configuration</h2>
+<p>Cyber Startup comes with a robust test suite that validates feature correctness, mathematical stability boundaries, and hardware-in-the-loop (HIL) scenario routing.</p>
+<p>To isolate dependencies and run the complete test suite:</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">./run_tests.sh</pre></div>
+<p>This executes <code class="notranslate">pytest</code> over the <code class="notranslate">tests/</code> directory.</p>
+<h3>Environment Control Flags</h3>
+<p>During local execution or testing, configure the system behavior using the following environment variables:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Environment Variable</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">MOCK_HW</code></td>
+<td><code class="notranslate">0</code> (set to <code class="notranslate">1</code> in tests)</td>
+<td><strong>Hardware Emulation Mode</strong>: Bypasses direct interactions with interface network offloading or active eBPF map modifications. Allows tests to execute in unprivileged CI/CD containers without root/sudo access.</td>
+</tr>
+<tr>
+<td><code class="notranslate">REQUIRE_REAL_SGX</code></td>
+<td><code class="notranslate">0</code></td>
+<td><strong>Strict SGX Hardware</strong>: When set to <code class="notranslate">1</code>, forces loading the actual SGX enclave shared library and performing hardware attestation. If unset, enclaves fallback to hardware-agnostic OpenSSL cryptographic paths.</td>
+</tr>
+<tr>
+<td><code class="notranslate">CYBERSTARTUP_NO_SUDO</code></td>
+<td>(Not Set)</td>
+<td><strong>Suppress Sudo</strong>: Disables prompt queries for administrative permissions during test phases or document compilation in Docker.</td>
+</tr>
+<tr>
+<td><code class="notranslate">CYBERSTARTUP_MOCK_TELEMETRY</code></td>
+<td>(Not Set)</td>
+<td><strong>Telemetry Replay Mode</strong>: Forces the telemetry library to load offline traffic metric replays instead of polling <code class="notranslate">/sys/fs/bpf/pmu_ringbuf</code>. Useful for offline incident forensics.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>🗂️ Repository Directory Structure</h2>
+<pre lang="text" class="notranslate"><code class="notranslate">/
+├── Dockerfile                         # Production API container image spec
+├── Makefile                           # Compile probes, enclaves, switch setups, &amp; documents
+├── README.md                          # Platform documentation portal (this file)
+├── docker-compose.yml                 # Orchestration setup for FastAPI Dashboard
+├── requirements.txt                   # Production Python package dependencies
+├── setup_and_run.sh                   # Main script to provision virtual env and run FastAPI app
+├── run_tests.sh                       # Isolated test env builder and test suite executor
+│
+├── src/                               # Main source files
+│   ├── ebpf/                          # Kernel-level C programs
+│   │   ├── tc_shaper.c                # XDP-level Semantic traffic shaper
+│   │   └── pmu_monitor.c              # perf_event CPU Performance Monitor Unit probe
+│   │
+│   ├── p4/                            # Hardware router programs
+│   │   └── containment_router.p4         # P4 Switch ASIC containment redirection routing rules
+│   │
+│   ├── sgx/                           # Trusted Execution Environment C sources
+│   │   ├── sgx_enclave.c              # SGX attestation, AES memory shield, and ELF verifier
+│   │   └── cyberstartup_sgx.manifest    # Gramine LibOS deployment configurations
+│   │
+│   └── cyberstartup/                    # Core Python modules
+│       ├── main.py                    # CLI simulation launcher
+│       ├── api/                       # REST/WebSocket API endpoints
+│       │   └── production_api.py      # FastAPI server &amp; live web telemetry dashboard
+│       ├── models/                    # PyTorch artificial intelligence architectures
+│       │   ├── ode_solver.py          # Custom Pure PyTorch Runge-Kutta 4th-Order Solver
+│       │   ├── ct_gode.py             # Continuous-Time Graph GNN (C-TGNN) threat propagation
+│       │   ├── neuro_symbolic.py      # Multi-modal fusion with Z3 logic constraint solvers
+│       ├── orchestration/             # Kernel and hardware controller managers
+│       │   ├── bpf_injector.py        # ZeroTrustController &amp; P4AsicController
+│       │   ├── dynamic_compiler.py    # Compiler wrapper and SGX attestation verifier
+│       │   └── roi_dashboard.py       # Cost avoidance and metric calculations
+│       └── telemetry/                 # Telemetry interfaces
+│           └── linux_pmu.py           # PMU/TCP connection reader (BPF Map bindings)
+│
+├── tests/                             # Quality assurance test suites
+│   ├── test_ode_solver.py             # Validates RK4 solver accuracy and non-divergence
+│   ├── test_ct_gode.py                # Assesses continuous graph GNN propagation paths
+│   ├── test_neuro_symbolic.py         # Tests multi-modal fusion and Z3 bounds logic
+│   ├── test_kernel_integration.py     # Assesses eBPF map interaction stability
+│   ├── test_sgx_enclave.py            # Tests attestation and memory page encryption
+│   └── test_website_e2e.py            # Playwright dashboard e2e tests
+│
+└── docs/                              # Legal, documentation, and audit trails
+    ├── patent/                        # Provisional patent LaTeX files &amp; compilation scripts
+    ├── whitepaper/                    # Business whitepaper documents and pitch decks
+    └── audits/                        # Persona-based validation reports and critiques
+</code></pre>
+</body>
+</html>

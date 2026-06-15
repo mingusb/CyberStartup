@@ -1,0 +1,43 @@
+# Environments
+venv
+venv/
+venv2/
+venv_test/
+test_env/
+pip-target/
+
+# Python/Testing
+__pycache__/
+.hypothesis/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+
+# Binary/Large files
+*.log
+*.bin
+*.so
+*.tar.gz
+*.mp4
+docs/whitepaper/LaunchVideo.mp4
+
+# LaTeX auxiliary files
+*.aux
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
+*.o
+data/threat_intel/*
+
+

@@ -1,0 +1,4 @@
+STIX Indicator: Cobalt Strike
+TTP: Unauthorized Software
+Description: Cobalt Strike is a commercial penetration testing and post-exploitation tool used to simulate threat actor activity.
+ID: unauthorized software--768c34c8-3e4b-4c28-98e3-82a92c34c8d2

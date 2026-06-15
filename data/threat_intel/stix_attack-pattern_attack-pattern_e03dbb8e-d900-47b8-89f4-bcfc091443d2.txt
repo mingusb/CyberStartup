@@ -1,0 +1,4 @@
+STIX Indicator: Remote Service Session Hijacking
+TTP: Attack Pattern
+Description: Adversaries may hijack established remote service sessions (e.g., RDP, SSH) to bypass access controls.
+ID: attack-pattern--e03dbb8e-d900-47b8-89f4-bcfc091443d2
