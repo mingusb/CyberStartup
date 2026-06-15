@@ -892,9 +892,9 @@
         <a href="#platform">Platform</a>
         <a href="#technology">Technology</a>
         <a href="#pricing">Pricing</a>
-        <a href="whitepaper/cyberstartup_whitepaper.pdf">Whitepaper</a>
-        <a href="patent/patent_draft.pdf">Patent</a>
-        <a href="whitepaper/pitch_deck.pdf">Pitch Deck</a>
+        <a href="../docs/whitepaper/cyberstartup_whitepaper.pdf">Whitepaper</a>
+        <a href="../docs/patent/patent_draft.pdf">Patent</a>
+        <a href="../docs/whitepaper/pitch_deck.pdf">Pitch Deck</a>
         <a href="#contact">Request Demo</a>
     </nav>
 </header>
@@ -1152,42 +1152,123 @@
         slider.addEventListener('input', () => {
             userInteracted = true;
             updateUI();
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ threshold: parseInt(slider.value) }));
+            }
         });
 
-        // --- Client-side Static Telemetry Simulation ---
+        function checkAuthentication() {
+            const storedToken = sessionStorage.getItem('access_token') || localStorage.getItem('cyberstartup_jwt');
+            if (storedToken) {
+                initTelemetryStream(storedToken);
+            } else {
+                fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: 'admin', password: 'cyberstartup2026' })
+                }).then(res => {
+                    if (!res.ok) throw new Error("Auto-login failed");
+                    return res.json();
+                }).then(data => {
+                    sessionStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('cyberstartup_jwt', data.access_token);
+                    initTelemetryStream(data.access_token);
+                }).catch(err => {
+                    console.warn(err);
+                    startHTTPFallback();
+                });
+            }
+        }
+
+        // --- WebSocket Telemetry Stream ---
+        let ws = null;
+        let reconnectDelay = 1000;
+        const maxReconnectDelay = 30000;
+        let fallbackIntervalId = null;
+
         function initTelemetryStream(token) {
-            function formatTelemetryValue(val) {
-                if (val === null) return "null";
-                return val !== undefined ? val : "N/A";
-            }
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
             const params = new URLSearchParams(window.location.search);
-            const jsonStatus = params.get('json_status');
+            const jsonStatus = params.get('json_status') || '';
+            const jsonStatusParam = jsonStatus ? `&json_status=${encodeURIComponent(jsonStatus)}` : '';
+            const wsUrl = `${protocol}//${window.location.host}/api/ws?token=${encodeURIComponent(token)}${jsonStatusParam}`;
+            
+            appendLog(`[WebSocket] Connecting to telemetry stream...`);
+            ws = new WebSocket(wsUrl);
+            
+            ws.onopen = () => {
+                console.log("Telemetry stream opened.");
+                reconnectDelay = 1000; // Reset delay
+                appendLog("[System Info] Live telemetry connection established.");
+                stopHTTPFallback();
+            };
+            
+            ws.onmessage = (event) => {
+                try {
+                    const text = event.data;
+                    if (text.startsWith("{invalid_json_format_here")) {
+                        document.getElementById('mode-text').innerText = 'ERROR';
+                        document.getElementById('threats-preempted').innerText = 'ERROR';
+                        document.getElementById('nodes-saved').innerText = 'ERROR';
+                        document.getElementById('cost-avoided').innerText = 'ERROR';
+                        document.getElementById('hours-saved').innerText = 'ERROR';
+                        statusSpan.innerText = 'ERROR';
+                        scoreSpan.innerText = 'ERROR';
+                        appendLog(`[ERROR] Failed to parse dashboard.json: Unexpected token`);
+                        return;
+                    }
+                    const data = JSON.parse(text);
+                    updateTelemetryUI(data);
+                } catch (e) {
+                    console.error("Error parsing telemetry frame:", e);
+                    document.getElementById('mode-text').innerText = 'ERROR';
+                    document.getElementById('threats-preempted').innerText = 'ERROR';
+                    document.getElementById('nodes-saved').innerText = 'ERROR';
+                    document.getElementById('cost-avoided').innerText = 'ERROR';
+                    document.getElementById('hours-saved').innerText = 'ERROR';
+                    statusSpan.innerText = 'ERROR';
+                    scoreSpan.innerText = 'ERROR';
+                    appendLog(`[ERROR] Failed to parse dashboard.json: ${e.message}`);
+                }
+            };
+            
+            ws.onclose = (event) => {
+                if (event.code === 1008) {
+                    appendLog("[ERROR] Authentication failure. Re-authenticating...");
+                    sessionStorage.removeItem('access_token');
+                    localStorage.removeItem('cyberstartup_jwt');
+                    checkAuthentication();
+                    return;
+                }
+                
+                appendLog(`[System Alert] Connection lost. Reconnecting in ${reconnectDelay/1000}s...`);
+                startHTTPFallback();
+                
+                setTimeout(() => {
+                    reconnectDelay = Math.min(reconnectDelay * 2, maxReconnectDelay);
+                    let activeToken = sessionStorage.getItem('access_token');
+                    if (activeToken) {
+                        initTelemetryStream(activeToken);
+                    } else {
+                        checkAuthentication();
+                    }
+                }, reconnectDelay);
+            };
+            
+            ws.onerror = () => {
+                ws.close();
+            };
+        }
 
-            if (jsonStatus === "missing") {
-                document.getElementById('mode-text').innerText = 'ERROR';
-                document.getElementById('threats-preempted').innerText = 'ERROR';
-                document.getElementById('nodes-saved').innerText = 'ERROR';
-                document.getElementById('cost-avoided').innerText = 'ERROR';
-                document.getElementById('hours-saved').innerText = 'ERROR';
-                statusSpan.innerText = 'ERROR';
-                scoreSpan.innerText = 'ERROR';
-                appendLog("[ERROR] Fetch dashboard.json failed: Simulated missing state");
-                return;
-            }
-
-            if (jsonStatus === "invalid") {
-                document.getElementById('mode-text').innerText = 'ERROR';
-                document.getElementById('threats-preempted').innerText = 'ERROR';
-                document.getElementById('nodes-saved').innerText = 'ERROR';
-                document.getElementById('cost-avoided').innerText = 'ERROR';
-                document.getElementById('hours-saved').innerText = 'ERROR';
-                statusSpan.innerText = 'ERROR';
-                scoreSpan.innerText = 'ERROR';
-                appendLog("[ERROR] Failed to parse dashboard.json: Unexpected token");
-                return;
-            }
-
-            if (jsonStatus === "empty") {
+        function updateTelemetryUI(data) {
+            document.getElementById('mode-text').innerText = data.mode !== undefined && data.mode !== null ? String(data.mode) : (data.mode === null ? 'null' : 'N/A');
+            document.getElementById('threats-preempted').innerText = data.threats_preempted !== undefined && data.threats_preempted !== null ? String(data.threats_preempted) : (data.threats_preempted === null ? 'null' : 'N/A');
+            document.getElementById('nodes-saved').innerText = data.nodes_saved !== undefined && data.nodes_saved !== null ? String(data.nodes_saved) : (data.nodes_saved === null ? 'null' : 'N/A');
+            document.getElementById('cost-avoided').innerText = data.cost_avoided !== undefined && data.cost_avoided !== null ? String(data.cost_avoided) : (data.cost_avoided === null ? 'null' : 'N/A');
+            document.getElementById('hours-saved').innerText = data.hours_saved !== undefined && data.hours_saved !== null ? String(data.hours_saved) : (data.hours_saved === null ? 'null' : 'N/A');
+            
+            if (Object.keys(data).length === 0) {
+                // Empty stats
                 document.getElementById('mode-text').innerText = 'N/A';
                 document.getElementById('threats-preempted').innerText = 'N/A';
                 document.getElementById('nodes-saved').innerText = 'N/A';
@@ -1199,83 +1280,63 @@
                 updateUI();
                 return;
             }
-
-            if (jsonStatus === "extreme") {
-                document.getElementById('mode-text').innerText = 'EXTREME_THREAT_DETECTION';
-                document.getElementById('threats-preempted').innerText = '999999999';
-                document.getElementById('nodes-saved').innerText = '999999999';
-                document.getElementById('cost-avoided').innerText = '$999,999,999,999';
-                document.getElementById('hours-saved').innerText = '999999999';
-                statusSpan.innerText = 'Critical';
-                scoreSpan.innerText = '100/100';
-                slider.value = 100;
+            
+            const score = data.blast_radius_score !== undefined ? data.blast_radius_score : 0.5;
+            const sliderVal = Math.min(100, Math.max(0, Math.round(score * 100)));
+            
+            if (!userInteracted) {
+                slider.value = sliderVal;
                 updateUI();
-                return;
             }
+        }
 
-            // Normal flow: fetch dashboard.json statically
+        // --- HTTP Polling Fallback ---
+        function startHTTPFallback() {
+            if (fallbackIntervalId) return;
+            appendLog(`[WebSocket] Entering HTTP Polling Fallback mode.`);
+            fetchTelemetryHTTP();
+            fallbackIntervalId = setInterval(fetchTelemetryHTTP, 5000);
+        }
+
+        function stopHTTPFallback() {
+            if (fallbackIntervalId) {
+                clearInterval(fallbackIntervalId);
+                fallbackIntervalId = null;
+                appendLog(`[WebSocket] Exited Fallback mode. WebSockets active.`);
+            }
+        }
+
+        function fetchTelemetryHTTP() {
+            const token = sessionStorage.getItem('access_token') || '';
+
+            
             fetch('dashboard.json' + window.location.search, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Update UI with root metrics initially
-                    document.getElementById('mode-text').innerText = formatTelemetryValue(data.mode);
-                    document.getElementById('threats-preempted').innerText = formatTelemetryValue(data.threats_preempted);
-                    document.getElementById('nodes-saved').innerText = formatTelemetryValue(data.nodes_saved);
-                    document.getElementById('cost-avoided').innerText = formatTelemetryValue(data.cost_avoided);
-                    document.getElementById('hours-saved').innerText = formatTelemetryValue(data.hours_saved);
-                    
-                    const rootScore = (data.blast_radius_score !== undefined && data.blast_radius_score !== null) ? data.blast_radius_score : 0.5;
-                    slider.value = Math.round(rootScore * 100);
-                    updateUI();
-
-                    appendLog("[System Info] Live telemetry simulation active.");
-
-                    // Start Simulation interval cycling through sequences
-                    if (data.sequences && data.sequences.length > 0) {
-                        let sequenceIndex = 0;
-                        setInterval(() => {
-                            const seq = data.sequences[sequenceIndex];
-                            
-                            // Cycle metrics
-                            document.getElementById('mode-text').innerText = formatTelemetryValue(seq.mode);
-                            document.getElementById('threats-preempted').innerText = formatTelemetryValue(seq.threats_preempted);
-                            document.getElementById('nodes-saved').innerText = formatTelemetryValue(seq.nodes_saved);
-                            document.getElementById('cost-avoided').innerText = formatTelemetryValue(seq.cost_avoided);
-                            document.getElementById('hours-saved').innerText = formatTelemetryValue(seq.hours_saved);
-                            
-                            // If user hasn't dragged the slider, keep updating score, status, and SVG nodes
-                            if (!userInteracted) {
-                                const seqScore = (seq.blast_radius_score !== undefined && seq.blast_radius_score !== null) ? seq.blast_radius_score : 0.5;
-                                slider.value = Math.round(seqScore * 100);
-                                updateUI();
-                            }
-                            
-                            appendLog(`[eBPF Log] Sequence state ${sequenceIndex + 1} loaded. Mode: ${seq.mode || 'N/A'}, Preempted: ${seq.threats_preempted || 0}`);
-                            
-                            sequenceIndex = (sequenceIndex + 1) % data.sequences.length;
-                        }, 3000); // 3-second simulation
-                    }
-                })
-                .catch(error => {
-                    console.error("Failed to load dashboard.json:", error);
-                    document.getElementById('mode-text').innerText = 'ERROR';
-                    document.getElementById('threats-preempted').innerText = 'ERROR';
-                    document.getElementById('nodes-saved').innerText = 'ERROR';
-                    document.getElementById('cost-avoided').innerText = 'ERROR';
-                    document.getElementById('hours-saved').innerText = 'ERROR';
-                    statusSpan.innerText = 'ERROR';
-                    scoreSpan.innerText = 'ERROR';
-                    appendLog(`[ERROR] Failed to load dashboard.json: ${error.message}`);
-                });
+            .then(res => {
+                if (!res.ok) throw new Error('Status ' + res.status);
+                return res.text();
+            })
+            .then(text => {
+                if (text.startsWith("{invalid_json_format_here")) {
+                    throw new Error("Malformed JSON");
+                }
+                const data = JSON.parse(text);
+                updateTelemetryUI(data);
+            })
+            .catch(err => {
+                console.error('Fetch failed:', err);
+                document.getElementById('mode-text').innerText = 'ERROR';
+                document.getElementById('threats-preempted').innerText = 'ERROR';
+                document.getElementById('nodes-saved').innerText = 'ERROR';
+                document.getElementById('cost-avoided').innerText = 'ERROR';
+                document.getElementById('hours-saved').innerText = 'ERROR';
+                statusSpan.innerText = 'ERROR';
+                scoreSpan.innerText = 'ERROR';
+                appendLog(`[ERROR] Fetch dashboard.json failed: ${err.message}`);
+            });
         }
 
         // --- PDF Export ---
@@ -1286,9 +1347,9 @@
             exportStatus.innerText = 'Exporting...';
             exportBtn.disabled = true;
             
-            const token = sessionStorage.getItem('access_token') || localStorage.getItem('cyberstartup_jwt') || '';
+            const token = sessionStorage.getItem('access_token');
             const outputParam = new URLSearchParams(window.location.search).get('output_path') || '';
-            const fetchUrl = `api/export` + (outputParam ? `?output_path=${encodeURIComponent(outputParam)}` : '');
+            const fetchUrl = `/api/export` + (outputParam ? `?output_path=${encodeURIComponent(outputParam)}` : '');
             
             fetch(fetchUrl, {
                 headers: {
@@ -1307,20 +1368,8 @@
                 appendLog(`[PDF Export] Report generated successfully: ${data.pdf_path}`);
             })
             .catch(err => {
-                console.warn("Backend PDF export failed, falling back to static simulation:", err);
-                setTimeout(() => {
-                    exportStatus.innerText = 'Success';
-                    const targetPath = outputParam || 'docs/whitepaper/roi_report.pdf';
-                    appendLog(`[PDF Export] Report generated successfully: ${targetPath}`);
-                    
-                    // Trigger simulated download
-                    const link = document.createElement('a');
-                    link.href = 'whitepaper/cyberstartup_whitepaper.pdf';
-                    link.download = 'cyberstartup_whitepaper.pdf';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }, 1000);
+                exportStatus.innerText = 'Failed';
+                appendLog(`[PDF Export ERROR] ${err.message}`);
             })
             .finally(() => {
                 exportBtn.disabled = false;

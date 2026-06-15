@@ -1158,7 +1158,26 @@
         });
 
         function checkAuthentication() {
-            initTelemetryStream('mock-token');
+            const storedToken = sessionStorage.getItem('access_token') || localStorage.getItem('cyberstartup_jwt');
+            if (storedToken) {
+                initTelemetryStream(storedToken);
+            } else {
+                fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: 'admin', password: 'cyberstartup2026' })
+                }).then(res => {
+                    if (!res.ok) throw new Error("Auto-login failed");
+                    return res.json();
+                }).then(data => {
+                    sessionStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('cyberstartup_jwt', data.access_token);
+                    initTelemetryStream(data.access_token);
+                }).catch(err => {
+                    console.warn(err);
+                    startHTTPFallback();
+                });
+            }
         }
 
         // --- WebSocket Telemetry Stream ---
@@ -1242,11 +1261,11 @@
         }
 
         function updateTelemetryUI(data) {
-            document.getElementById('mode-text').innerText = data.mode !== undefined ? data.mode : 'N/A';
-            document.getElementById('threats-preempted').innerText = data.threats_preempted !== undefined ? data.threats_preempted : 'N/A';
-            document.getElementById('nodes-saved').innerText = data.nodes_saved !== undefined ? data.nodes_saved : 'N/A';
-            document.getElementById('cost-avoided').innerText = data.cost_avoided !== undefined ? data.cost_avoided : 'N/A';
-            document.getElementById('hours-saved').innerText = data.hours_saved !== undefined ? data.hours_saved : 'N/A';
+            document.getElementById('mode-text').innerText = data.mode !== undefined && data.mode !== null ? String(data.mode) : (data.mode === null ? 'null' : 'N/A');
+            document.getElementById('threats-preempted').innerText = data.threats_preempted !== undefined && data.threats_preempted !== null ? String(data.threats_preempted) : (data.threats_preempted === null ? 'null' : 'N/A');
+            document.getElementById('nodes-saved').innerText = data.nodes_saved !== undefined && data.nodes_saved !== null ? String(data.nodes_saved) : (data.nodes_saved === null ? 'null' : 'N/A');
+            document.getElementById('cost-avoided').innerText = data.cost_avoided !== undefined && data.cost_avoided !== null ? String(data.cost_avoided) : (data.cost_avoided === null ? 'null' : 'N/A');
+            document.getElementById('hours-saved').innerText = data.hours_saved !== undefined && data.hours_saved !== null ? String(data.hours_saved) : (data.hours_saved === null ? 'null' : 'N/A');
             
             if (Object.keys(data).length === 0) {
                 // Empty stats
@@ -1288,8 +1307,8 @@
         }
 
         function fetchTelemetryHTTP() {
-            const token = sessionStorage.getItem('access_token');
-            if (!token) return;
+            const token = sessionStorage.getItem('access_token') || '';
+
             
             fetch('dashboard.json' + window.location.search, {
                 headers: {
