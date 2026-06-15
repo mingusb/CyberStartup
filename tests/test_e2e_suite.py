@@ -126,7 +126,7 @@ def test_tier1_f2_09_rk4_step():
 def test_tier1_f2_10_temporal_decay_dynamics():
     func = GraphODEFunc(hidden_dim=8, threat_dim=8)
     func.edge_index = torch.tensor([[0, 1], [1, 0]], dtype=torch.long)
-    func.threat_vector = torch.randn(1, 8)
+    func.threat_vector = torch.ones(1, 8) * 5.0  # Ensure positive so ReLU does not zero it out
     h = torch.ones(2, 8)
     dh_dt_t0 = func(torch.tensor(0.0), h)
     dh_dt_t10 = func(torch.tensor(10.0), h)
