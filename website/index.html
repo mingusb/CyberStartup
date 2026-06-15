@@ -1368,12 +1368,27 @@
                 appendLog(`[PDF Export] Report generated successfully: ${data.pdf_path}`);
             })
             .catch(err => {
-                exportStatus.innerText = 'Failed';
-                appendLog(`[PDF Export ERROR] ${err.message}`);
+                if (window.location.hostname.includes("github.io")) {
+                    exportStatus.innerText = 'Success (Fallback)';
+                    appendLog(`[PDF Export] Fallback to static whitepaper due to GitHub Pages deployment`);
+                    window.open('./whitepaper/cyberstartup_whitepaper.pdf', '_blank');
+                } else {
+                    exportStatus.innerText = 'Failed';
+                    appendLog(`[PDF Export ERROR] ${err.message}`);
+                }
             })
             .finally(() => {
                 exportBtn.disabled = false;
             });
+        });
+
+        // Dynamic links for GitHub Pages
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hostname.includes("github.io")) {
+                document.querySelectorAll('a[href^="../docs/"]').forEach(a => {
+                    a.href = a.getAttribute('href').replace('../docs/', './');
+                });
+            }
         });
 
         // Initialize on load
@@ -1400,11 +1415,17 @@
     <div class="feature-card" style="width: 100%; text-align: center; margin-bottom: 40px;">
         <h3>Causal Threat DAG (Directed Acyclic Graph)</h3>
         <p>Mathematical proof of our preemptive capabilities. This DAG models the continuous-time evolution of lateral movement, allowing our CT-GODE models to predict and intercept threats before they materialize.</p>
-        <div style="background-color: var(--bg-terminal); border: 1px dashed var(--color-cyan); padding: 20px; border-radius: 8px; font-family: var(--font-mono); color: var(--color-cyan); display: inline-block; text-align: left; margin-top: 15px; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);">
-            [Node 0: Initial Access] ---> [Node 1: Privilege Escalation] ---> [Node 2: Lateral Movement]<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<br>
-            [Node 4: Persistence] ------------------------------------> [Node 3: Data Exfiltration]
+        <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+            mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+        </script>
+        <div class="mermaid" style="background-color: var(--bg-terminal); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-top: 15px; display: flex; justify-content: center; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
+graph LR
+    N0[Initial Access] --> N1[Privilege Escalation]
+    N1 --> N2[Lateral Movement]
+    N0 --> N4[Persistence]
+    N2 --> N3[Data Exfiltration]
+    N4 --> N3
         </div>
     </div>
     <div class="feature-card" style="width: 30%;">
